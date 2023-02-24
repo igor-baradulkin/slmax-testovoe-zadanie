@@ -26,7 +26,7 @@ class PeoplesDB {
     }
 
     public function savePeopleInDB(){
-        $conn = new PDO("mysql:host=localhost;dbname=organization", "root", "");
+        $conn = new PDO();
         $sqlQuery = "SELECT Id, Name, Surname, BirthDate, Gender, CityBirth FROM peoples WHERE Id = $this->id";
         $result = $conn->query($sqlQuery);
 
@@ -44,7 +44,7 @@ class PeoplesDB {
     }
 
     public function deletePeopleFromDB(){
-        $conn = new PDO("mysql:host=localhost;dbname=organization", "root", "");
+        $conn = new PDO();
         $sqlQuery = "DELETE FROM peoples WHERE Id = ?";
         $stmt = $conn->prepare($sqlQuery);
         $stmt->execute(array($this->id));
