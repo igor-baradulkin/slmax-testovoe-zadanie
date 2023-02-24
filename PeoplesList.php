@@ -3,7 +3,7 @@ class PeoplesList{
     public $peoplesArr = [];
 
     private function __construct($id, $exp = '<'){
-        $conn = new PDO("mysql:host=localhost;dbname=organization", "root", "");
+        $conn = new PDO();
         $sqlQuery = "SELECT Id, Name, Surname, BirthDate, Gender, CityBirth FROM peoples WHERE Id $exp $id";
 
         $result = $conn->query($sqlQuery)->fetchAll();
@@ -29,7 +29,7 @@ class PeoplesList{
 
     public function deletePeoplesFromDB(){
         if($this->peoplesArr){
-            $conn = new PDO("mysql:host=localhost;dbname=organization", "root", "");
+            $conn = new PDO();
 
             $idList = [];
             foreach($this->peoplesArr as $person){
